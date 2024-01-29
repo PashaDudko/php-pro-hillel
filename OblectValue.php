@@ -62,12 +62,15 @@ class ValueObject
 
     private function showError(int $value): string
     {
-        return "Expect new color value from 0 to 255 , got: {$value}";
+        return "Expects new color value from 0 to 255, got: {$value}";
     }
 
     public function equals(ObjectValue $color1, ObjectValue $color2): bool
     {
-        return ($color1->getRed() == $color2->getRed() && $color1->getGreen() == $color2->getGreen() &&  $color1->getBlue() == $color2->getBlue());
+        return
+            ($color1->getRed() == $color2->getRed()) &&
+            ($color1->getGreen() == $color2->getGreen()) &&
+            ($color1->getBlue() == $color2->getBlue());
     }
 
     public static function random(): ValueObject
