@@ -1,14 +1,14 @@
 <?php
 
+interface DeliverInterface
+{
+    public function delivery(string $type): string;
+}
 interface FormatterInterface
 {
     public function format(string $type): string;
 }
 
-interface DeliverInterface
-{
-    public function delivery(string $type): string;
-}
 class BaseFormatter
 {
     public function getFormatter(string $name): ?object
@@ -93,8 +93,6 @@ class ToConsoleDeliver extends  BaseDeliver implements DeliverInterface
         return "Вывод формата ({$name}) в консоль";
     }
 }
-
-
 
 class Logger
 {
