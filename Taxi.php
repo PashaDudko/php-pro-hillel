@@ -51,7 +51,7 @@ class Order
     {
         switch ($type) {
             case 1:
-                return new StandartTaxi();
+                return new EconomTaxi();
             case 2:
                 return new StandartTaxi();
             case 3:
