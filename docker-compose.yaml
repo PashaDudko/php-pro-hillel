@@ -1,0 +1,47 @@
+version: "3.3"
+
+volumes:
+  my_db_vol:
+    driver: local
+
+networks:
+  hillel:
+    driver: bridge
+
+services:
+  web:
+    image: "php:8.3-apache"
+    build:
+      context: /.docker
+    restart: always
+    ports:
+      - "8081:80"
+    volumes:
+      - .:/var/www/html
+    networks:
+      - hillel
+
+#  db:
+#    image: "mysql:8.0"
+#    restart: always
+#    ports:
+#      - "33061:3306"
+#    volumes:
+#      - "my_db_vol:/var/lib/mysql"
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=root
+#      - MYSQL_DATABASE=hillel
+#      - MYSQL_USER=user
+#      - MYSQL_PASSWORD=password
+#    networks:
+#      - hillel
+#    depends_on:
+#      - web
+#
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8080:8080
+#    networks:
+#      - hillel
